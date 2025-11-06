@@ -37,8 +37,8 @@ private CourseRepository courseRepository;
         return courseRepository.save(course);
     }
 
-    @PutMapping
-    public ResponseEntity<Course> update(@RequestBody Course course) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Course> update(@PathVariable Long id, @RequestBody Course course) {
         if (course.getId() == null || !courseRepository.existsById(course.getId())) {
             return ResponseEntity.notFound().build();
         }
